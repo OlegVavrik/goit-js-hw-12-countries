@@ -1,4 +1,5 @@
 import countryMarkup from './template/country.hbs';
+import list from './template/list.hbs';
 import { debounce } from 'lodash';
 import fetchCountries from './fetchCountries'
 import "@pnotify/core/dist/PNotify.css" 
@@ -25,6 +26,10 @@ function onInput(e) {
 			return (markup.innerHTML = countryMarkup(data[0]));
 		 }
 
+		 if (data.length > 1 && data.length < 10) {
+			 return (listUl.innerHTML = list(data))
+		 }
+
 		 if (data.length >= 10) {
 			 fetchError(error,
 				 'To many matches found. Please enter more specific query!');
@@ -48,7 +53,7 @@ function onInput(e) {
 	   color: 'green',
 	});
  }
-// vccvc
+
 
 
 
