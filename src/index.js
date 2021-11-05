@@ -15,6 +15,10 @@ input.addEventListener('input', debounce(onInput, 500));
  
 function onInput(e) {
 	const userCountry = e.target.value;
+	if(userCountry) {
+		listUl.innerHTML = '';
+		markup.innerHTML = '';
+	}
 	 fetchCountries(userCountry)
 	 .then(renderMarkup)
 	 .catch(fetchError);
